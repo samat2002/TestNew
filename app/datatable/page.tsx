@@ -286,6 +286,7 @@ const ProductDataTable = () => {
                         value={filters.priceRange.min}
                         onChange={(e) => setPriceRange(e.target.value, filters.priceRange.max)}
                         className="w-24"
+                        min={0}
                     />
                     <span>-</span>
                     <Input
