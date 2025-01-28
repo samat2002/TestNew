@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,46 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex h-screen">
+          {/* Sidebar */}
+          <aside className="w-64 bg-gray-800 text-white p-4">
+            <h1 className="text-xl font-bold mb-4">Sidebar</h1>
+            <nav>
+              <ul>
+                <li className="mb-2">
+                  <a href="/" className="block p-2 hover:bg-gray-700 rounded">
+                    Home
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a href="/video" className="block p-2 hover:bg-gray-700 rounded">
+                    Viddeo
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <Link href="/file" className="block p-2 hover:bg-gray-700 rounded">
+                    File Upload
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link href="/datatable" className="block p-2 hover:bg-gray-700 rounded">
+                    Data Table
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </aside>
+
+          {/* Main Content Area */}
+          <div className="flex-1 flex flex-col">
+            {/* Navbar */}
+            <Navbar />
+            {/* Content */}
+            <main className="flex-1 bg-gray-100 overflow-y-auto">
+              {children}
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
