@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,14 +41,14 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li className="mb-2">
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded">
-                    About
+                  <a href="/video" className="block p-2 hover:bg-gray-700 rounded">
+                    Viddeo
                   </a>
                 </li>
                 <li className="mb-2">
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded">
-                    Contact
-                  </a>
+                  <Link href="/file" className="block p-2 hover:bg-gray-700 rounded">
+                    File Upload
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -57,9 +58,8 @@ export default function RootLayout({
           <div className="flex-1 flex flex-col">
             {/* Navbar */}
             <Navbar />
-
             {/* Content */}
-            <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
+            <main className="flex-1 bg-gray-100 overflow-y-auto">
               {children}
             </main>
           </div>
