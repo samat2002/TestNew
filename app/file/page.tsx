@@ -10,6 +10,7 @@ import {
     AlertTitle,
 } from "@/components/ui/alert";
 import { Upload, AlertCircle } from "lucide-react";
+import SaveButton from '@/components/saveButton';
 
 interface BannerFormData {
     name: string;
@@ -166,13 +167,21 @@ const BannerUpload = () => {
                         </Alert>
                     )}
 
-                    <Button
+                    {/* <Button
                         type="submit"
                         className="w-full"
                         disabled={loading || !formData.file}
                     >
                         {loading ? 'Uploading...' : 'Upload Banner'}
-                    </Button>
+                    </Button> */}
+                    <div>
+                        {/* Custom className passed to SaveButton */}
+                        <SaveButton
+                            onClick={() => console.log('Save clicked')}
+                            disabled={false}
+                            className="border-2 border-red-500 text-lg"
+                        />
+                    </div>
                 </form>
             </CardContent>
         </Card>
