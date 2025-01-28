@@ -6,7 +6,7 @@ const YouTubeVideo = ({ videoId }: { videoId: string }) => {
         <div className="relative w-full pt-[56.25%]">
             <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`${videoId}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
             />
@@ -25,8 +25,9 @@ const LocalVideo = ({ src }: { src: string }) => {
                 loop
                 muted
                 playsInline
+                src={`${src}`}
             >
-                <source src={src} type="video/mp4" />
+                {/* <source src={src} type="video/mp4" /> */}
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -46,6 +47,7 @@ export default function Video({
         const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
         return match ? match[1] : null;
     };
+    // const src = 'https://www.youtube.com/watch?v=Zi_XLOBDo_Y'
 
     if (type === 'youtube') {
         const videoId = getYouTubeId(source);

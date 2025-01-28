@@ -36,7 +36,7 @@ export default function RootLayout({
             <nav>
               <ul>
                 <li className="mb-2">
-                  <a href="#" className="block p-2 hover:bg-gray-700 rounded">
+                  <a href="/" className="block p-2 hover:bg-gray-700 rounded">
                     Home
                   </a>
                 </li>
@@ -48,6 +48,11 @@ export default function RootLayout({
                 <li className="mb-2">
                   <Link href="/file" className="block p-2 hover:bg-gray-700 rounded">
                     File Upload
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link href="/datatable" className="block p-2 hover:bg-gray-700 rounded">
+                    Data Table
                   </Link>
                 </li>
               </ul>
