@@ -23,12 +23,12 @@ const ProductDataTable = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [pageSize, setPageSize] = useState(10);
+    const [pageSize, setPageSize] = useState(20);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetchProducts();
-    }, [currentPage, pageSize, searchTerm]);
+    }, [currentPage, pageSize]);
 
     const fetchProducts = async () => {
         try {
@@ -43,6 +43,8 @@ const ProductDataTable = () => {
             const response = await fetch(url);
             const data = await response.json();
             setProducts(data.products);
+            console.log('data', data);
+
             setTotalPages(Math.ceil(data.total / pageSize));
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -61,7 +63,7 @@ const ProductDataTable = () => {
 
     const handleSearch = (e: any) => {
         setSearchTerm(e.target.value);
-        setCurrentPage(1);
+        // setCurrentPage(1);
     };
 
     const handlePageSizeChange = (value: any) => {
@@ -80,13 +82,7 @@ const ProductDataTable = () => {
     return (
         <div className="container mx-auto p-4">
             <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-4">
-                    <Input
-                        placeholder="Search products..."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        className="w-64"
-                    />
+                <div className="w-full flex justify-between items-center gap-4">
                     <Select value={pageSize.toString()} onValueChange={handlePageSizeChange}>
                         <SelectTrigger className="w-32">
                             <SelectValue />
@@ -98,6 +94,15 @@ const ProductDataTable = () => {
                             <SelectItem value="50">50 per page</SelectItem>
                         </SelectContent>
                     </Select>
+                    <div className='flex gap-x-3'>
+                        <Input
+                            placeholder="Search products..."
+                            value={searchTerm}
+                            onChange={handleSearch}
+                            className="w-64"
+                        />
+                        <Button onClick={() => fetchProducts()}>Searcha</Button>
+                    </div>
                 </div>
             </div>
 
